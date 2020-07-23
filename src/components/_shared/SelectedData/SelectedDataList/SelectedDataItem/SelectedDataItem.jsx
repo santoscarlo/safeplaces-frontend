@@ -27,11 +27,12 @@ import pointsSelectors from 'ducks/points/selectors';
 import applicationActions from 'ducks/application/actions';
 import mapActions from 'ducks/map/actions';
 import { formattedDuration } from 'helpers/dateTime';
-import applicationSelectors from 'ducks/application/selectors';
 
 const SelectedDataItem = ({
-  pointId,
+  id,
+  discreetPointIds,
   latitude,
+  caseId,
   longitude,
   time: timestamp,
   duration,
@@ -42,15 +43,12 @@ const SelectedDataItem = ({
   const activePoint = useSelector(state =>
     pointsSelectors.getActivePoint(state),
   );
-  const isHighlighted = activePoint?.pointId === pointId;
+  const isHighlighted = activePoint?.id === id;
   const time = moment(timestamp).format('h:mma');
   const classes = classNames({
     [`${selectedDataItem}`]: true,
     [`${selectedDataItemHighlighted}`]: isHighlighted,
   });
-  const isTrace =
-    useSelector(state => applicationSelectors.getMode(state)) === 'trace';
-
   const friendlyDuration = formattedDuration(duration);
 
   const handleClick = e => {
@@ -63,9 +61,11 @@ const SelectedDataItem = ({
     } else {
       dispatch(
         pointsActions.setSelectedPoint({
-          pointId,
+          id,
           latitude,
+          caseId,
           longitude,
+          discreetPointIds,
           time: timestamp,
           duration,
         }),
@@ -90,7 +90,7 @@ const SelectedDataItem = ({
           </ul>
         </div>
       </button>
-      {isHighlighted && isTrace && (
+      {isHighlighted && (
         <ul className={selectedDataMenuActions}>
           <li>
             <button
@@ -107,7 +107,9 @@ const SelectedDataItem = ({
             <button
               type="button"
               title="Delete Item"
-              onClick={() => dispatch(pointsActions.deletePoint(pointId))}
+              onClick={() =>
+                dispatch(pointsActions.deletePoint({ id, discreetPointIds }))
+              }
             >
               <FontAwesomeIcon icon={faTrash} />
             </button>
