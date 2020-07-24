@@ -9,3 +9,6 @@ Authorities:
 
 - Example Health Authority for Testing:
   - {url: "https://raw.githack.com/tripleblindmarket/safe-places/develop/examples/safe-paths.json"}
+  
+- Republic of the Philippines / Department of Health:
+  - {url: "http://safeplaces.safer.ph/safeplaces.json"}
