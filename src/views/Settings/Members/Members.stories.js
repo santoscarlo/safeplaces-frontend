@@ -7,8 +7,4 @@ export default {
   title: 'Members',
 };
 
-export const Default = () => (
-  <SidebarWrapper>
-    <Members />
-  </SidebarWrapper>
-);
+export const Default = () => <Members />;
