@@ -12,3 +12,21 @@
   font-weight: 600;
 }
 
+.comboControl {
+  display: flex;
+
+  input {
+    border: 2px solid #e5e7fa;
+    box-sizing: border-box;
+    border-radius: 8px 0px 0px 8px;
+    height: 48px;
+    background-color: #fff;
+  }
+
+  select {
+    border: 2px solid #e5e7fa;
+    border-left: 0;
+    box-sizing: border-box;
+    border-radius: 0 8px 8px 0;
+  }
+}

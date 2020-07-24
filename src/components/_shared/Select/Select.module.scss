@@ -1,16 +1,16 @@
 .control {
-  background: #fff;
   position: relative;
 }
 
 .selectReplace {
   display: block;
-  position: static;
+  position: relative;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
   margin-bottom: 0;
   border: none;
+  background: #fff;
 
   select {
     font-size: 16px;
@@ -23,7 +23,8 @@
     height: 100%;
     width: 100%;
     appearance: none;
-    padding: 20px;
+    height: 48px;
+    padding: 0 40px 0 20px;
     cursor: pointer;
     z-index: 2;
     margin-bottom: 0;
@@ -40,8 +41,7 @@
     font-weight: 900;
     z-index: 1;
     font-size: 15px;
-    line-height: 1;
-    z-index: 1;
     height: 100%;
+    color: #d8d8de;
   }
 }
